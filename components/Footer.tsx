@@ -65,22 +65,24 @@ export default function Footer() {
         <div className="border-t border-white/15 pt-6 mt-2 text-[11px] md:text-xs text-white/80 space-y-4">
           <div className="flex flex-col md:flex-row md:justify-between gap-4">
             <div className="space-y-1 max-w-md">
-              <p className="font-medium">Optivality Labs Private Limited</p>
+              <p className="font-medium">Optivality</p>
               <p>
-                No. 31, 3rd Floor, 28th Cross, Industrial Area, Banashankari 2nd Stage,
-                Bengaluru, Karnataka, India 560070
+                253, Satyadev Nagar Sudama Nagar, Indore, 452009, India
               </p>
             </div>
 
             <div className="space-y-1 md:text-right">
               <p className="font-medium">Contact</p>
               <p>
-                <a href="mailto:hello@optivality.in" className="underline underline-offset-2">
-                  hello@optivality.in
-                </a>{' '}
-                | +91 63686 94243
+                <a href="mailto:Optivitality5@gmail.com" className="underline underline-offset-2">
+                  Optivitality5@gmail.com
+                </a>
               </p>
-              <p>Mon - Sat · 9:30 am to 5:30 pm (IST)</p>
+              <p>
+                <a href="tel:9111611948" className="underline underline-offset-2">
+                  9111611948
+                </a>
+              </p>
             </div>
           </div>
 

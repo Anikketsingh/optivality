@@ -78,7 +78,7 @@ export default function ContactPage() {
                         id="phone"
                         name="phone"
                         className="w-full rounded-lg px-4 py-3 border border-[#eef6f0] bg-white focus:outline-none focus:ring-2 focus:ring-[#2c6b58] focus:border-transparent transition-all"
-                        placeholder="+91 12345 67890"
+                        placeholder="9111611948"
                       />
                     </div>
 
@@ -138,10 +138,10 @@ export default function ContactPage() {
                           Email
                         </h3>
                         <a 
-                          href="mailto:hello@optivality.in" 
+                          href="mailto:Optivitality5@gmail.com" 
                           className="text-lg text-[#133a2f] hover:text-[#2c6b58] transition-colors"
                         >
-                          hello@optivality.in
+                          Optivitality5@gmail.com
                         </a>
                       </div>
 
@@ -150,21 +150,11 @@ export default function ContactPage() {
                           Phone
                         </h3>
                         <a 
-                          href="tel:+916368694243" 
+                          href="tel:9111611948" 
                           className="text-lg text-[#133a2f] hover:text-[#2c6b58] transition-colors"
                         >
-                          +91 63686 94243
+                          9111611948
                         </a>
-                      </div>
-
-                      <div>
-                        <h3 className="text-sm font-medium text-[#1f5a4a] mb-2 uppercase tracking-wider">
-                          Business Hours
-                        </h3>
-                        <p className="text-lg text-gray-600">
-                          Monday - Saturday<br />
-                          9:30 AM - 5:30 PM (IST)
-                        </p>
                       </div>
 
                       <div>
@@ -172,10 +162,9 @@ export default function ContactPage() {
                           Address
                         </h3>
                         <p className="text-lg text-gray-600 leading-relaxed">
-                          Optivality Labs Private Limited<br />
-                          No. 31, 3rd Floor, 28th Cross<br />
-                          Industrial Area, Banashankari 2nd Stage<br />
-                          Bengaluru, Karnataka, India 560070
+                          253, Satyadev Nagar Sudama Nagar<br />
+                          Indore, 452009<br />
+                          India
                         </p>
                       </div>
                     </div>
@@ -184,41 +173,11 @@ export default function ContactPage() {
                   {/* Social Media Card */}
                   <div className="rounded-2xl bg-white/80 backdrop-blur-sm border border-white/30 p-8 md:p-12 shadow-md">
                     <h3 className="text-xl font-semibold text-[#133a2f] mb-4">
-                      Follow Us
+                      Social Media
                     </h3>
-                    <p className="text-gray-600 mb-6">
-                      Stay connected with us on social media for wellness tips, product updates, and more.
+                    <p className="text-lg text-gray-600">
+                      Social media links - not created yet
                     </p>
-                    <div className="flex gap-4">
-                      <a
-                        href="#"
-                        aria-label="Visit Optivality on Facebook"
-                        className="w-12 h-12 rounded-full border border-[#eef6f0] bg-white flex items-center justify-center hover:bg-[#2c6b58] hover:text-white hover:border-[#2c6b58] transition-all duration-200"
-                      >
-                        <span className="text-sm font-semibold">f</span>
-                      </a>
-                      <a
-                        href="#"
-                        aria-label="Visit Optivality on Instagram"
-                        className="w-12 h-12 rounded-full border border-[#eef6f0] bg-white flex items-center justify-center hover:bg-[#2c6b58] hover:text-white hover:border-[#2c6b58] transition-all duration-200"
-                      >
-                        <span className="text-sm font-semibold">IG</span>
-                      </a>
-                      <a
-                        href="#"
-                        aria-label="Visit Optivality on YouTube"
-                        className="w-12 h-12 rounded-full border border-[#eef6f0] bg-white flex items-center justify-center hover:bg-[#2c6b58] hover:text-white hover:border-[#2c6b58] transition-all duration-200"
-                      >
-                        <span className="text-sm font-semibold">▶</span>
-                      </a>
-                      <a
-                        href="#"
-                        aria-label="Visit Optivality on LinkedIn"
-                        className="w-12 h-12 rounded-full border border-[#eef6f0] bg-white flex items-center justify-center hover:bg-[#2c6b58] hover:text-white hover:border-[#2c6b58] transition-all duration-200"
-                      >
-                        <span className="text-sm font-semibold">in</span>
-                      </a>
-                    </div>
                   </div>
                 </div>
               </div>
