@@ -169,16 +169,6 @@ export default function ContactPage() {
                       </div>
                     </div>
                   </div>
-
-                  {/* Social Media Card */}
-                  <div className="rounded-2xl bg-white/80 backdrop-blur-sm border border-white/30 p-8 md:p-12 shadow-md">
-                    <h3 className="text-xl font-semibold text-[#133a2f] mb-4">
-                      Social Media
-                    </h3>
-                    <p className="text-lg text-gray-600">
-                      Social media links - not created yet
-                    </p>
-                  </div>
                 </div>
               </div>
             </div>
