@@ -26,12 +26,10 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Send confirmation email to subscriber (only if it's the verified email for testing)
-    // For production, you'll need to verify your domain to send to any email
-    const subscriberEmail = email === 'its.aniketsingh04@gmail.com' ? email : 'its.aniketsingh04@gmail.com'
+    // Send confirmation email to subscriber
     const { data, error } = await resend.emails.send({
       from: 'Optivality <onboarding@resend.dev>', // Update this with your verified domain
-      to: [subscriberEmail],
+      to: [email],
       subject: 'Welcome to Optivality Newsletter',
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">

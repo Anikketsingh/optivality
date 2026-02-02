@@ -1,3 +1,6 @@
+'use client'
+
+import { useState } from 'react'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import Link from 'next/link'
@@ -54,6 +57,41 @@ const blogPosts = [
 ]
 
 export default function BlogPage() {
+  const [email, setEmail] = useState('')
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success'>('idle')
+  const [message, setMessage] = useState('')
+
+  const handleNewsletterSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setStatus('loading')
+    setMessage('')
+
+    try {
+      const response = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      })
+
+      const data = await response.json()
+
+      // Only show success message if subscription was successful
+      if (response.ok && (data.success || data.data?.id)) {
+        setStatus('success')
+        setMessage('Thank you for subscribing! Check your email for confirmation.')
+        setEmail('')
+      } else {
+        // Silently fail - don't show error message
+        setStatus('idle')
+      }
+    } catch (error) {
+      // Silently fail - don't show error message
+      setStatus('idle')
+    }
+  }
+
   return (
     <main className="min-h-screen">
       <Navbar />
@@ -126,16 +164,29 @@ export default function BlogPage() {
               <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
                 Get the latest articles on longevity, wellness, and preventive health delivered to your inbox.
               </p>
-              <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+              <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
                 <input
                   type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email"
-                  className="flex-1 rounded-full px-4 py-3 border border-[#eef6f0] bg-white focus:outline-none focus:ring-2 focus:ring-[#2c6b58] focus:border-transparent transition-all"
+                  required
+                  disabled={status === 'loading'}
+                  className="flex-1 rounded-full px-4 py-3 border border-[#eef6f0] bg-white focus:outline-none focus:ring-2 focus:ring-[#2c6b58] focus:border-transparent transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                 />
-                <button className="rounded-full bg-[#2b5f4f] text-white px-6 py-3 shadow hover:opacity-95 transition-all duration-200 font-semibold whitespace-nowrap">
-                  Subscribe
+                <button 
+                  type="submit"
+                  disabled={status === 'loading'}
+                  className="rounded-full bg-[#2b5f4f] text-white px-6 py-3 shadow hover:opacity-95 transition-all duration-200 font-semibold whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {status === 'loading' ? 'Subscribing...' : 'Subscribe'}
                 </button>
-              </div>
+              </form>
+              {status === 'success' && message && (
+                <div className="mt-4 p-4 rounded-lg bg-green-50 text-green-800 border border-green-200 max-w-md mx-auto">
+                  {message}
+                </div>
+              )}
             </div>
           </div>
         </div>
