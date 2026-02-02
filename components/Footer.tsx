@@ -1,6 +1,41 @@
+'use client'
+
+import { useState } from 'react'
 import Link from 'next/link'
 
 export default function Footer() {
+  const [email, setEmail] = useState('')
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+  const [message, setMessage] = useState('')
+
+  const handleNewsletterSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setStatus('loading')
+    setMessage('')
+
+    try {
+      const response = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        setStatus('success')
+        setMessage('Thank you for subscribing! Check your email for confirmation.')
+        setEmail('')
+      } else {
+        throw new Error(data.error || 'Failed to subscribe')
+      }
+    } catch (error) {
+      setStatus('error')
+      setMessage('Sorry, there was an error. Please try again.')
+    }
+  }
   return (
     <footer className="bg-black text-white px-4 sm:px-6 lg:px-8 pt-10 pb-6 rounded-2xl m-4 md:m-6 lg:m-8">
       <div className="max-w-6xl mx-auto">
@@ -16,16 +51,30 @@ export default function Footer() {
           {/* Newsletter */}
           <div className="w-full md:w-2/3">
             <p className="italic text-sm md:text-base mb-4">Know it first. Know it all.</p>
-            <div className="flex flex-col sm:flex-row gap-3 max-w-md">
+            <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md">
               <input
                 type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email"
+                required
                 className="w-full rounded-full px-4 py-2.5 bg-white text-black placeholder:text-black/60 text-sm outline-none border border-white/60 focus:border-white"
               />
-              <button className="inline-flex items-center justify-center rounded-full px-6 py-2.5 bg-white text-black text-sm font-medium hover:bg-gray-100 transition-colors">
-                <span>→</span>
+              <button 
+                type="submit"
+                disabled={status === 'loading'}
+                className="inline-flex items-center justify-center rounded-full px-6 py-2.5 bg-white text-black text-sm font-medium hover:bg-gray-100 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                <span>{status === 'loading' ? '...' : '→'}</span>
               </button>
-            </div>
+            </form>
+            {message && (
+              <p className={`mt-2 text-xs ${
+                status === 'success' ? 'text-green-300' : 'text-red-300'
+              }`}>
+                {message}
+              </p>
+            )}
           </div>
 
           {/* Social */}

@@ -1,7 +1,52 @@
+'use client'
+
+import { useState } from 'react'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 
 export default function ContactPage() {
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success'>('idle')
+  const [message, setMessage] = useState('')
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setStatus('loading')
+    setMessage('')
+
+    const form = e.currentTarget
+    const formData = {
+      name: (form.elements.namedItem('name') as HTMLInputElement).value,
+      email: (form.elements.namedItem('email') as HTMLInputElement).value,
+      phone: (form.elements.namedItem('phone') as HTMLInputElement).value,
+      subject: (form.elements.namedItem('subject') as HTMLSelectElement).value,
+      message: (form.elements.namedItem('message') as HTMLTextAreaElement).value,
+    }
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await response.json()
+
+      // Only show success message if email was actually sent
+      if (response.ok && (data.success || data.data?.id)) {
+        setStatus('success')
+        setMessage('Thank you! Your message has been sent. We\'ll get back to you soon.')
+        e.currentTarget.reset()
+      } else {
+        // Silently fail - don't show error message
+        setStatus('idle')
+      }
+    } catch (error) {
+      // Silently fail - don't show error message
+      setStatus('idle')
+    }
+  }
   return (
     <main className="min-h-screen">
       <Navbar />
@@ -40,7 +85,7 @@ export default function ContactPage() {
                     Send us a message
                   </h2>
                   
-                  <form className="space-y-6">
+                  <form onSubmit={handleSubmit} className="space-y-6">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium text-[#133a2f] mb-2">
                         Name
@@ -115,11 +160,18 @@ export default function ContactPage() {
                       />
                     </div>
 
+                    {status === 'success' && message && (
+                      <div className="p-4 rounded-lg bg-green-50 text-green-800 border border-green-200">
+                        {message}
+                      </div>
+                    )}
+
                     <button
                       type="submit"
-                      className="w-full bg-[#2b5f4f] text-white px-6 py-3 rounded-full shadow hover:opacity-95 transition-all duration-200 font-semibold"
+                      disabled={status === 'loading'}
+                      className="w-full bg-[#2b5f4f] text-white px-6 py-3 rounded-full shadow hover:opacity-95 transition-all duration-200 font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      Send Message →
+                      {status === 'loading' ? 'Sending...' : 'Send Message →'}
                     </button>
                   </form>
                 </div>

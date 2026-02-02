@@ -100,8 +100,8 @@ export default function Hero() {
             {/* CTA Buttons */}
             <div className="relative z-10 flex flex-col sm:flex-row gap-3 sm:items-center">
               <Link
-                href="/products"
-                aria-label="Explore OptiVitality products"
+                href="/contact"
+                aria-label="Start your wellness journey with OptiVitality"
                 className="inline-flex items-center justify-center w-fit px-8 py-4 rounded-xl bg-gradient-to-r from-primary to-primary-light text-white font-semibold shadow-lg shadow-primary/25 border border-primary/15 transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-primary/30 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:ring-offset-2 focus:ring-offset-white"
               >
                 Start Your Journey
@@ -121,13 +121,13 @@ export default function Hero() {
                 </svg>
               </Link>
 
-              <Link
-                href="/about"
+              <a
+                href="#founder-vision"
                 aria-label="Learn about the OptiVitality philosophy"
                 className="inline-flex items-center justify-center w-fit px-7 py-4 rounded-xl border border-primary/20 text-primary font-semibold bg-white/70 hover:bg-primary/5 shadow-sm hover:shadow-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:ring-offset-2 focus:ring-offset-white"
               >
                 View Philosophy
-              </Link>
+              </a>
             </div>
           </div>
         </div>

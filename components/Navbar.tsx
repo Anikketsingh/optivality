@@ -31,8 +31,14 @@ export default function Navbar() {
               </span>
             </div>
 
-            {/* Right: White pill button with contact */}
+            {/* Right: Navigation links */}
             <div className="flex items-center gap-3">
+              <Link
+                href="/blog"
+                className="hidden md:flex items-center text-sm md:text-base font-medium text-white hover:opacity-80 transition-opacity"
+              >
+                Blog
+              </Link>
               <Link
                 href="/contact"
                 className="hidden md:flex items-center rounded-full bg-white border-2 border-[#1a1a1a] px-4 py-2 hover:opacity-90 transition-opacity"
@@ -69,9 +75,16 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Mobile menu - only contact */}
+        {/* Mobile menu */}
         {isOpen && (
           <div className="md:hidden mt-3 rounded-2xl bg-[#1a1a1a] shadow-lg px-4 py-3 space-y-1">
+            <Link
+              href="/blog"
+              className="block w-full rounded-lg px-4 py-3 text-white hover:opacity-80 transition-opacity font-medium text-center"
+              onClick={() => setIsOpen(false)}
+            >
+              Blog
+            </Link>
             <Link
               href="/contact"
               className="block w-full rounded-lg px-4 py-3 text-white hover:opacity-80 transition-opacity font-medium text-center"

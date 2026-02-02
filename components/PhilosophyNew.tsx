@@ -1,6 +1,6 @@
 export default function PhilosophyNew() {
   return (
-    <section className="py-12 md:py-16 px-4 sm:px-6 lg:px-8">
+    <section id="philosophy" className="py-12 md:py-16 px-4 sm:px-6 lg:px-8 scroll-mt-24">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-stretch">
           {/* Left: rounded image card */}
@@ -40,8 +40,8 @@ export default function PhilosophyNew() {
               </p>
 
               <a
-                href="/about"
-                className="inline-block bg-[#2b5f4f] text-white px-6 py-3 rounded-full shadow hover:opacity-95"
+                href="/contact"
+                className="inline-block bg-[#2b5f4f] text-white px-6 py-3 rounded-full shadow hover:opacity-95 transition-all"
               >
                 Know More About Us →
               </a>
