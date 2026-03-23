@@ -48,7 +48,7 @@ export default function ProductPreview() {
                 {product.benefit}
               </p>
               <Link
-                href="/products"
+                href="/shop"
                 className="inline-block text-primary font-semibold hover:text-primary-light transition-colors"
               >
                 View Details →

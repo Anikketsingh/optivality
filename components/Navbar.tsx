@@ -34,6 +34,12 @@ export default function Navbar() {
             {/* Right: Navigation links */}
             <div className="flex items-center gap-3">
               <Link
+                href="/shop"
+                className="hidden md:flex items-center text-sm md:text-base font-medium text-white hover:opacity-80 transition-opacity"
+              >
+                Shop
+              </Link>
+              <Link
                 href="/blog"
                 className="hidden md:flex items-center text-sm md:text-base font-medium text-white hover:opacity-80 transition-opacity"
               >
@@ -78,6 +84,13 @@ export default function Navbar() {
         {/* Mobile menu */}
         {isOpen && (
           <div className="md:hidden mt-3 rounded-2xl bg-[#1a1a1a] shadow-lg px-4 py-3 space-y-1">
+            <Link
+              href="/shop"
+              className="block w-full rounded-lg px-4 py-3 text-white hover:opacity-80 transition-opacity font-medium text-center"
+              onClick={() => setIsOpen(false)}
+            >
+              Shop
+            </Link>
             <Link
               href="/blog"
               className="block w-full rounded-lg px-4 py-3 text-white hover:opacity-80 transition-opacity font-medium text-center"
