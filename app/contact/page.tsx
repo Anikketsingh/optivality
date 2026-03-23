@@ -33,17 +33,14 @@ export default function ContactPage() {
 
       const data = await response.json()
 
-      // Only show success message if email was actually sent
       if (response.ok && (data.success || data.data?.id)) {
         setStatus('success')
         setMessage('Thank you! Your message has been sent. We\'ll get back to you soon.')
-        e.currentTarget.reset()
+        form.reset()
       } else {
-        // Silently fail - don't show error message
         setStatus('idle')
       }
     } catch (error) {
-      // Silently fail - don't show error message
       setStatus('idle')
     }
   }

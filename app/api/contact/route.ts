@@ -29,7 +29,7 @@ export async function POST(request: NextRequest) {
     // Send email using Resend
     const { data, error } = await resend.emails.send({
       from: 'Optivality Contact Form <onboarding@resend.dev>', // Update this with your verified domain
-      to: ['its.aniketsingh04@gmail.com'],
+      to: ['optivitality5@gmail.com'],
       replyTo: email,
       subject: `Contact Form: ${subject}`,
       html: `

@@ -26,60 +26,33 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Send confirmation email to subscriber
+    // Send notification to the team about new subscriber
+    // Note: With Resend free tier (onboarding@resend.dev), emails can only be sent
+    // to the account owner's email. Once a domain is verified at resend.com/domains,
+    // you can also send a confirmation email to the subscriber.
     const { data, error } = await resend.emails.send({
-      from: 'Optivality <onboarding@resend.dev>', // Update this with your verified domain
-      to: [email],
-      subject: 'Welcome to Optivality Newsletter',
+      from: 'Optivality Newsletter <onboarding@resend.dev>',
+      to: ['optivitality5@gmail.com'],
+      subject: 'New Newsletter Subscription',
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #133a2f; border-bottom: 2px solid #2c6b58; padding-bottom: 10px;">
-            Thank you for subscribing!
+            New Newsletter Subscriber
           </h2>
           <div style="margin-top: 20px;">
-            <p>Hello,</p>
-            <p>Thank you for subscribing to the Optivality newsletter. You'll now receive:</p>
-            <ul style="color: #2c6b58;">
-              <li>Latest articles on longevity and wellness</li>
-              <li>Product updates and new formulations</li>
-              <li>Exclusive wellness tips and insights</li>
-              <li>Special offers and announcements</li>
-            </ul>
-            <p style="margin-top: 20px;">We're excited to have you on this wellness journey with us!</p>
-            <p style="margin-top: 20px; color: #666;">
-              Best regards,<br>
-              The Optivality Team
-            </p>
+            <p><strong style="color: #2c6b58;">Email:</strong> ${email}</p>
+            <p><strong style="color: #2c6b58;">Date:</strong> ${new Date().toLocaleString()}</p>
           </div>
         </div>
       `,
     })
 
     if (error) {
-      console.error('Resend error (subscriber email):', error)
+      console.error('Resend error (newsletter):', error)
       return NextResponse.json(
         { error: error.message || 'Failed to subscribe' },
         { status: 400 }
       )
-    }
-
-    // Also notify Optivality team (don't fail if this fails)
-    try {
-      await resend.emails.send({
-        from: 'Optivality Newsletter <onboarding@resend.dev>',
-        to: ['its.aniketsingh04@gmail.com'],
-        subject: 'New Newsletter Subscription',
-        html: `
-          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-            <h2 style="color: #133a2f;">New Newsletter Subscriber</h2>
-            <p><strong>Email:</strong> ${email}</p>
-            <p><strong>Date:</strong> ${new Date().toLocaleString()}</p>
-          </div>
-        `,
-      })
-    } catch (teamEmailError) {
-      // Log but don't fail the subscription if team notification fails
-      console.error('Failed to send team notification:', teamEmailError)
     }
 
     return NextResponse.json({ success: true, data })
