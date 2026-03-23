@@ -38,7 +38,7 @@ export default function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6 lg:gap-8 mb-8 md:mb-10">
           {/* Left Panel - Glassmorphic brand moment */}
           <div
-            className="relative rounded-3xl overflow-hidden aspect-[4/5] md:aspect-square bg-white/10 backdrop-blur-xl border border-white/30 shadow-[0_32px_80px_-40px_rgba(16,64,38,0.6)] ring-1 ring-white/20"
+            className="relative rounded-3xl overflow-hidden min-h-[320px] md:aspect-square bg-white/10 backdrop-blur-xl border border-white/30 shadow-[0_32px_80px_-40px_rgba(16,64,38,0.6)] ring-1 ring-white/20"
             style={{
               backgroundImage: "url('/assets/istockphoto-1468149085-612x612.png')",
               backgroundSize: 'cover',
@@ -77,7 +77,7 @@ export default function Hero() {
           </div>
 
           {/* Right Panel - Text Content */}
-          <div className="relative rounded-3xl overflow-hidden aspect-[4/5] md:aspect-square bg-white/80 backdrop-blur-md border border-primary/10 shadow-[0_28px_75px_-45px_rgba(13,62,16,0.65)] p-8 md:p-12 flex flex-col justify-center">
+          <div className="relative rounded-3xl min-h-[420px] lg:aspect-square bg-white/80 backdrop-blur-md border border-primary/10 shadow-[0_28px_75px_-45px_rgba(13,62,16,0.65)] p-6 md:p-8 lg:p-12 flex flex-col justify-center">
             {/* Animated SVG Background */}
             <RightPanelBackground />
             <div className="absolute inset-0 bg-gradient-to-br from-primary/6 via-white/70 to-secondary-light/70" />
