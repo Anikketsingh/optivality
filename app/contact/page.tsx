@@ -120,7 +120,7 @@ export default function ContactPage() {
                         id="phone"
                         name="phone"
                         className="w-full rounded-lg px-4 py-3 border border-[#eef6f0] bg-white focus:outline-none focus:ring-2 focus:ring-[#2c6b58] focus:border-transparent transition-all"
-                        placeholder="9111611948"
+                        placeholder="9999999999"
                       />
                     </div>
 
@@ -191,18 +191,6 @@ export default function ContactPage() {
                           className="text-lg text-[#133a2f] hover:text-[#2c6b58] transition-colors"
                         >
                           Optivitality5@gmail.com
-                        </a>
-                      </div>
-
-                      <div>
-                        <h3 className="text-sm font-medium text-[#1f5a4a] mb-2 uppercase tracking-wider">
-                          Phone
-                        </h3>
-                        <a 
-                          href="tel:9111611948" 
-                          className="text-lg text-[#133a2f] hover:text-[#2c6b58] transition-colors"
-                        >
-                          9111611948
                         </a>
                       </div>
 

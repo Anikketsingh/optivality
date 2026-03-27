@@ -127,11 +127,6 @@ export default function Footer() {
                   Optivitality5@gmail.com
                 </a>
               </p>
-              <p>
-                <a href="tel:9111611948" className="underline underline-offset-2">
-                  9111611948
-                </a>
-              </p>
             </div>
           </div>
 

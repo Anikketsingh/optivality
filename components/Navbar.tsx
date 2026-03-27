@@ -26,9 +26,12 @@ export default function Navbar() {
 
             {/* Center: Brand name as text logo */}
             <div className="hidden md:flex items-center flex-1 justify-center">
-              <span className="text-sm md:text-base lg:text-lg font-semibold tracking-[0.2em] text-white uppercase">
+              <Link 
+                href="/"
+                className="text-sm md:text-base lg:text-lg font-semibold tracking-[0.2em] text-white uppercase hover:opacity-80 transition-opacity"
+              >
                 Optivality
-              </span>
+              </Link>
             </div>
 
             {/* Right: Navigation links */}
